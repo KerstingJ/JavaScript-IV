@@ -28,8 +28,12 @@ class Instructor extends Person{
     }
     
     grade(student, subject){
-        let statement = `${student.name} receives a perfect score on ${subject}`;
+        let score = Math.ceil(Math.random() * 20);
+        student.grade += score - 10;
+        let statement = `${student.name} receives a score of ${score}/10 on ${subject}` + 
+            ` from ${this.name}`;
         console.log(statement);
+        console.log(`${student.name} has a grade of ${student.grade}`)
     }
 }
 
@@ -72,6 +76,7 @@ class Student extends Person{
         this.previousBackground = attr.previousBackground;
         this.className = attr.className;
         this.favSubjects = attr.favSubjects;
+        this.grade = Math.ceil(Math.random() * 50) + 50;
     }
 
     listsSubjects(){
@@ -88,6 +93,16 @@ class Student extends Person{
         console.log(statement);
     }
     
+    graduate(){
+        let grad = this.grade > 70;
+        if (grad){
+            console.log(`\nCongrats! ${this.name}, you graduated!!!`);
+        } else {
+            console.log(`\nSorry ${this.name}, You better go back and hit the books.`);
+        }
+
+        return grad;
+    }
 }
 function demoCode(){
 
@@ -140,6 +155,16 @@ function demoCode(){
     console.log(fried.favInstructor);
     fendi.speak();
     fendi.listsSubjects();
+    phred.grade(fendi, 'Java');
+    let attempts = 0
+    while(!fendi.graduate() && attempts < 10){
+        phred.grade(fendi, 'Java');
+        attempts ++;
+    }
+    if (attempts >= 10){
+        console.log(`\n\n\nFendi dropped out cause she couldn't pass`);
+        console.log(`Dont be like Fendi keep going until you graduate\n\n\n`)
+    }
 
 }
 
