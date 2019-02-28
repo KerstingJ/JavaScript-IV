@@ -38,7 +38,8 @@ class ProjectManager extends Instructor{
         super(attr);
 
         //this kind of logic could be cool for an object with a bunch of properties
-        // dangerous tho cause you could overwrite other stuff unintentionally
+        // dangerous tho cause you could overwrite other stuff unintentionally,
+        // or introduce something you didnt want to be there
         //
         // constructor(attr){
         //     let keys = Object.keys(attr);
