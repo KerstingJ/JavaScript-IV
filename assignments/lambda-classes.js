@@ -94,16 +94,18 @@ class Student extends Person{
     }
     
     graduate(){
-        let grad = this.grade > 70;
-        if (grad){
+        this.grad = this.grade > 70;
+        if (this.grad){
             console.log(`\nCongrats! ${this.name}, you graduated!!!`);
         } else {
             console.log(`\nSorry ${this.name}, You better go back and hit the books.`);
         }
 
-        return grad;
+        return this.grad;
     }
 }
+
+
 function demoCode(){
 
     const fred = new Person({
@@ -161,7 +163,7 @@ function demoCode(){
         phred.grade(fendi, 'Java');
         attempts ++;
     }
-    if (attempts >= 10){
+    if (attempts >= 10 && !fendi.grad){
         console.log(`\n\n\nFendi dropped out cause she couldn't pass`);
         console.log(`Dont be like Fendi keep going until you graduate\n\n\n`)
     }
