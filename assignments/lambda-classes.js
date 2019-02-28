@@ -124,7 +124,7 @@ function demoCode(){
     });
 
     const fried = new ProjectManager({
-        name: 'Phred',
+        name: 'Fried',
         location: 'Wherever man',
         age: 27,
         gender: 'male',
@@ -132,7 +132,7 @@ function demoCode(){
         specialty: 'yeah',
         catchPhrase: `What are we doin again?`,
         gradClassName: `CS 420`, 
-        favInstructor: `Josh Knell`
+        favInstructor: `Cheech`
     });
 
     const fendi = new Student({
