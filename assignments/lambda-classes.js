@@ -5,7 +5,7 @@ class Person{
         this.name = attr.name;
         this.age = attr.age;
         this.location = attr.location;
-        this.gender = `no assumptions`;
+        this.gender = attr.gender;
     }
 
     speak(){
@@ -38,11 +38,18 @@ class ProjectManager extends Instructor{
         super(attr);
 
         //this kind of logic could be cool for an object with a bunch of properties
-        // minus the wantedAttr part. dangerous tho cause you could overwrite other stuff
+        // dangerous tho cause you could overwrite other stuff unintentionally
+        //
+        // constructor(attr){
+        //     let keys = Object.keys(attr);
+        //     keys.forEach( key => this[key] = attr[key]);
+        // }
+
         let wantedAttr = [`gradClassName`, `favInstructor`];
         let keys = Object.keys(attr);
-        keys.forEach(function(key){
+        keys.forEach( key => {
             if(wantedAttr.includes(key)){
+                console.log(key);
                 this[key] = attr[key];
             }
         });
@@ -81,3 +88,58 @@ class Student extends Person{
     }
     
 }
+function demoCode(){
+
+    const fred = new Person({
+        name: 'Fred',
+        age: 37,
+        location: 'Bedrock',
+        gender: 'male'
+    });
+
+    const phred = new Instructor({
+        name: 'Phred',
+        location: 'Bedrock Heights',
+        age: 27,
+        gender: 'male',
+        favLanguage: 'JavaScript',
+        specialty: 'Front-end',
+        catchPhrase: `Don't forget the homies`
+    });
+
+    const fried = new ProjectManager({
+        name: 'Phred',
+        location: 'Wherever man',
+        age: 27,
+        gender: 'male',
+        favLanguage: 'English',
+        specialty: 'yeah',
+        catchPhrase: `What are we doin again?`,
+        gradClassName: `CS 420`, 
+        favInstructor: `Josh Knell`
+    });
+
+    const fendi = new Student({
+        name: 'Fendi',
+        location: 'Italy',
+        age: 27,
+        gender: 'female',
+        previousBackground: `Fashion`,
+        className: `WEB18`,
+        favSubjects: [`CSS`, `HTML`, `Javascript`]
+    });
+
+
+    fred.speak();
+    phred.speak();
+    phred.demo(`ES Next`);
+    fried.speak();
+    fried.standUp(`WEB18_Fried`);
+    fried.demo(`All The Things`);
+    console.log(fried.favInstructor);
+    fendi.speak();
+    fendi.listsSubjects();
+
+}
+
+demoCode();
