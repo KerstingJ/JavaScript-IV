@@ -28,8 +28,9 @@ class Instructor extends Person{
     }
     
     grade(student, subject){
-        let score = Math.ceil(Math.random() * 20);
-        student.grade += score - 10;
+        let score = Math.ceil(Math.random() * 20); // score will be between 0-20
+        student.grade += score - 10; // shifts score to be from -10 - 10 and adds it to student.grade
+
         let statement = `${student.name} receives a score of ${score}/10 on ${subject}` + 
             ` from ${this.name}`;
         console.log(statement);
@@ -158,12 +159,14 @@ function demoCode(){
     fendi.speak();
     fendi.listsSubjects();
     phred.grade(fendi, 'Java');
+
     let attempts = 0
+
     while(!fendi.graduate() && attempts < 10){
         phred.grade(fendi, 'Java');
         attempts ++;
     }
-    if (attempts >= 10 && !fendi.grad){
+    if (attempts >= 10 && !fendi.grad){ //Student.grad is short for graduate i should have made a better name
         console.log(`\n\n\nFendi dropped out cause she couldn't pass`);
         console.log(`Dont be like Fendi keep going until you graduate\n\n\n`)
     }
